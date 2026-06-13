@@ -1,0 +1,19 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Verify without sending code first",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "verify", "phone": "+79001234567", "code": "123456"},
+      "expectedStatus": 400,
+      "expectedBody": {"error": "Сначала запросите код"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
